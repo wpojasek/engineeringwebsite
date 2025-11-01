@@ -1,0 +1,111 @@
+:root{
+  --bg: #343756;
+  --logo-min: 90px;
+  --logo-max: 270px;
+  --hex-size: clamp(70px, 9.3vw, 175px);
+  --transition: 260ms;
+}
+
+/* reset */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* background and no scroll */
+body {
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* center stage */
+.stage {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* centered logo */
+.logo {
+  width: clamp(var(--logo-min), 11.25vw, var(--logo-max));
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  -webkit-user-drag: none;
+  user-select: none;
+  z-index: 30;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  pointer-events: none;
+}
+
+/* hex links: positioned absolutely by JS, centered at left/top */
+.hex-link {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  display: block;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* hex images sizing and hover animation */
+.hex-img {
+  display: block;
+  width: var(--hex-size);
+  height: auto;
+  transition: transform var(--transition) cubic-bezier(.2,.9,.3,1), box-shadow var(--transition);
+  transform-origin: 50% 50%;
+  will-change: transform;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.45));
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* hover & focus effects */
+.hex-link:hover .hex-img,
+.hex-link:focus .hex-img {
+  transform: translateY(-6%) scale(1.25);
+  filter:
+    drop-shadow(0 0 8px rgba(255,255,255,0.25))
+    drop-shadow(0 12px 30px rgba(0,0,0,0.55));
+  transition-duration: 220ms;
+}
+
+/* gentle floating animation (purely decorative) */
+@keyframes floaty {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6%); }
+  100% { transform: translateY(0); }
+}
+
+/* slight variation per item */
+.hex-link:nth-of-type(1) .hex-img { animation-duration: 6.2s; }
+.hex-link:nth-of-type(2) .hex-img { animation-duration: 5.8s; }
+.hex-link:nth-of-type(3) .hex-img { animation-duration: 6.6s; }
+.hex-link:nth-of-type(4) .hex-img { animation-duration: 5.4s; }
+
+/* accessibility focus outline */
+.hex-link:focus {
+  outline: 3px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+}
+
+/* responsive tweaks */
+@media (max-width: 800px) {
+  :root { --hex-size: clamp(44px, 16vw, 96px); }
+  .logo { width: clamp(68px, 22.5vw, 180px); }
+}

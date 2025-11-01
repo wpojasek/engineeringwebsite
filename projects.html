@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MY PROJECTS</title>
+    <link rel="stylesheet" href="main2.css">
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="PojasekW" />
+<link rel="manifest" href="favicon/site.webmanifest" />
+</head>
+<body>
+    <div class="project-container">
+
+        <!-- Projekt 1: DISTOBEE -->
+        <div class="project">
+            <div class="media">
+                <div class="slideshow">
+                    <img src="PROJECTS/distobee1.JPG" alt="DISTOBEE 1">
+                    <img src="PROJECTS/distobee2.JPG" alt="DISTOBEE 2">
+                    <img src="PROJECTS/distobee3.JPG" alt="DISTOBEE 3">
+                    <img src="PROJECTS/distobee4.JPG" alt="DISTOBEE 4">
+                    <img src="PROJECTS/distobee5.JPG" alt="DISTOBEE 5">
+                    <img src="PROJECTS/distobee6.JPG" alt="DISTOBEE 6">
+                </div>
+            </div>
+            <div class="description">
+                <h2>DISTOBEE</h2>
+                <p>The DISTOBEE project was developed for the ESA 2nd Space Resources Challenge, held on October 17, 2025. I was responsible for the design and integration of the rover’s camera system. The camera housings were modeled in Autodesk Inventor, ensuring proper protection and alignment. The system utilized Raspberry Pi boards and capture cards for video processing and data transmission. The goal was to deliver a robust and reliable vision system capable of operating in demanding environments.</p>
+                <div class="social-icons">
+    <a href="https://www.instagram.com/distobee/" target="_blank">
+        <img src="PROJECTS/instagramlogo.png" alt="Instagram">
+    </a>
+    <a href="https://www.linkedin.com/company/distobee/" target="_blank">
+        <img src="PROJECTS/linkedinlogo.png" alt="LinkedIn">
+    </a>
+</div>
+
+            </div>
+        </div>
+
+        <!-- Projekt 2: STM32 Data Acquisition -->
+        <div class="project">
+            <div class="media">
+                <img src="PROJECTS/stm1.jpg" alt="STM32 Project">
+                <video src="PROJECTS/stm2.mp4" controls muted></video>
+                <a class="pdf-button" href="PROJECTS/stm3.pdf" download>DOWNLOAD PDF</a>
+            </div>
+            <div class="description">
+                <h2>STM32 Data Acquisition and Real-Time Analysis System</h2>
+                <p>This project uses an STM32F303RE board connected via UART to a PC for real-time signal acquisition and analysis. The system reads analog data from a LIS3DH accelerometer, converts it to digital, and transmits it to a custom MATLAB app. The application displays the data either as time-domain waveforms or frequency spectra, with the mode selectable via a GUI button or voice commands. Speech recognition is implemented using a neural network and the device’s built-in microphone. The app also allows adjusting STFT window length for more detailed spectral analysis.</p>
+            </div>
+        </div>
+
+        <!-- Projekt 3: Shaft Design -->
+        <div class="project">
+            <div class="media">
+                <a class="pdf-button" href="PROJECTS/pdf2.pdf" download>DOWNLOAD PDF</a>
+            </div>
+            <div class="description">
+                <h2>Shaft Design</h2>
+                <p>The project focused on designing a mechanical shaft based on a given set of technical and material parameters. The process involved dimensioning, material selection, and stress calculations to ensure mechanical reliability and safety. Design verification was carried out according to engineering standards and load conditions. The final model was optimized for durability and manufacturing feasibility.</p>
+            </div>
+        </div>
+
+        <!-- Projekt 4: Mechanical Systems Analysis -->
+        <div class="project">
+            <div class="media">
+                <a class="pdf-button" href="PROJECTS/pdf1.pdf" download>DOWNLOAD PDF</a>
+            </div>
+            <div class="description">
+                <h2>Mechanical Systems Analysis</h2>
+                <p>This project involved performing kinematic and dynamic analyses of mechanical systems. It included calculating velocities, accelerations, and reaction forces for various mechanism components. Dynamic simulations were used to assess torque, power, and energy transfer efficiency. The results provided valuable insights for optimizing system performance and stability.</p>
+            </div>
+        </div>
+
+        <!-- Projekt 5: Mechatronics LEGO Gearbox -->
+        <div class="project">
+            <div class="media">
+                <video src="PROJECTS/mechproject.mp4" autoplay muted loop></video>
+            </div>
+            <div class="description">
+                <h2>Mechatronics Project – LEGO Gearbox on Husarion CORE2</h2>
+                <p>The project involved building a functional gearbox prototype using LEGO components controlled by a Husarion CORE2 board. The system was programmed in C to perform automated gear shifting and control logic. The design combined mechanical elements with embedded control and sensor feedback. The project demonstrated practical mechatronic integration of hardware, software, and mechanical structures.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Simple slideshow for Projekt 1
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+        function showSlides() {
+            slides.forEach((img, i) => img.style.display = 'none');
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex-1].style.display = 'block';
+            setTimeout(showSlides, 3000);
+        }
+        if(slides.length) showSlides();
+    </script>
+</body>
+</html>
+
+

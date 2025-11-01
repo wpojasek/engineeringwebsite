@@ -1,0 +1,165 @@
+
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WP-ME</title>
+  <link rel="stylesheet" href="main.css">
+<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="PojasekW" />
+<link rel="manifest" href="favicon/site.webmanifest" />
+
+</head>
+<body>
+  <main class="stage" id="stage">
+    <img src="logo2.png" alt="logo" class="logo" id="logo">
+
+    <a href="aboutme.html"      class="hex-link" aria-label="About me"><img src="hexaboutme.png"      alt="about"      class="hex-img"></a>
+    <a href="projects.html"     class="hex-link" aria-label="Projects"><img src="hexprojects.png"     alt="projects"   class="hex-img"></a>
+    <a href="scienceclub.html"  class="hex-link" aria-label="Science club"><img src="hexscienceclub.png"  alt="science club" class="hex-img"></a>
+    <a href="university.html"   class="hex-link" aria-label="University"><img src="hexuniversity.png"   alt="university"  class="hex-img"></a>
+  </main>
+
+  <script>
+  (function () {
+    const stage = document.getElementById('stage');
+    const logo = document.getElementById('logo');
+    const links = Array.from(document.querySelectorAll('.hex-link'));
+    const GAP_FROM_LOGO = 16;      // px gap between logo and hex
+    const GAP_BETWEEN_HEX = 12;    // px gap between hexes
+    const MAX_ATTEMPTS = 250;
+
+    function imagesReady() {
+      const imgs = Array.from(document.images);
+      return Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(r => { img.onload = img.onerror = r; })));
+    }
+
+    function getCenter(rect) {
+      return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+    }
+
+    function placeHexes() {
+      const stageRect = stage.getBoundingClientRect();
+      const cx = stageRect.left + stageRect.width / 2;
+      const cy = stageRect.top + stageRect.height / 2;
+      const logoRect = logo.getBoundingClientRect();
+      const logoRadius = Math.max(logoRect.width, logoRect.height) / 2;
+
+      const placed = [];
+
+      links.forEach(link => {
+        const img = link.querySelector('img');
+        const imgRect = img.getBoundingClientRect();
+        // determine radius for collision checks
+        const hexRadius = Math.max(imgRect.width, imgRect.height) / 2 || 36;
+
+        let px, py, attempts = 0, ok = false;
+
+        while (attempts < MAX_ATTEMPTS && !ok) {
+          attempts++;
+          // random position inside stage (with small padding)
+          const padding = Math.max(12, hexRadius + 6);
+          const minX = stageRect.left + padding;
+          const maxX = stageRect.right - padding;
+          const minY = stageRect.top + padding;
+          const maxY = stageRect.bottom - padding;
+
+          px = Math.floor(Math.random() * (maxX - minX)) + minX;
+          py = Math.floor(Math.random() * (maxY - minY)) + minY;
+
+          // distance from logo center
+          const dx = px - cx;
+          const dy = py - cy;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < logoRadius + hexRadius + GAP_FROM_LOGO) {
+            // too close to logo -> reject
+            continue;
+          }
+
+          // ensure not placed substantially below logo (optional: keep most hexes above/beside)
+          // (this line can be removed if you want fully random)
+          if (py > cy + logoRect.height * 0.6) {
+            // allow some, but avoid placing directly under logo most of the time
+            if (Math.random() > 0.35) continue;
+          }
+
+          // check overlap with other placed hexes
+          let overlap = false;
+          for (const p of placed) {
+            const d = Math.hypot(px - p.x, py - p.y);
+            if (d < (hexRadius + p.radius + GAP_BETWEEN_HEX)) {
+              overlap = true;
+              break;
+            }
+          }
+          if (overlap) continue;
+
+          ok = true;
+        }
+
+        // fallback: if failed to find non-overlapping spot, place on a circle around logo
+        if (!ok) {
+          const angle = Math.random() * Math.PI * 2;
+          const fallbackR = logoRadius + hexRadius + GAP_FROM_LOGO + 24;
+          px = cx + Math.cos(angle) * fallbackR;
+          py = cy + Math.sin(angle) * fallbackR;
+          // clamp inside stage
+          px = Math.max(stageRect.left + hexRadius + 8, Math.min(stageRect.right - hexRadius - 8, px));
+          py = Math.max(stageRect.top + hexRadius + 8, Math.min(stageRect.bottom - hexRadius - 8, py));
+        }
+
+        // convert to percentages relative to stage (keeps layout responsive on resize)
+        const leftPct = ((px - stageRect.left) / stageRect.width) * 100;
+        const topPct  = ((py - stageRect.top) / stageRect.height) * 100;
+
+        link.style.left = leftPct + '%';
+        link.style.top  = topPct  + '%';
+
+        // store placed center (in px, page coordinates) and radius for future collision checks
+        placed.push({ x: px, y: py, radius: hexRadius });
+      });
+    }
+
+    // debounce resize
+    let resizeTimer;
+    function onResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(placeHexes, 80);
+    }
+
+    imagesReady().then(() => {
+      placeHexes();
+      window.addEventListener('resize', onResize);
+      // randomize again on each load (if user refreshes) - already done by placeHexes on load
+    });
+  })();
+  </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll('.slideshow img');
+    let slideIndex = 0;
+
+    function showSlides() {
+        slides.forEach(img => img.classList.remove('active'));
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+    }
+
+    if (slides.length > 0) {
+        slides[0].classList.add('active'); // pokaż pierwsze zdjęcie od razu
+        setInterval(showSlides, 3500); // płynne przejścia co 3.5 s
+    }
+});
+</script>
+
+
+
+
+</body>
+</html>

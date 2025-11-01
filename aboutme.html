@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ABOUT ME</title>
+  <link rel="stylesheet" href="main3.css">
+  <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="PojasekW" />
+<link rel="manifest" href="favicon/site.webmanifest" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <figure class="photo">
+        <img src="me.png" alt="Wojciech Pojasek" />
+      </figure>
+      <article class="about">
+        <h1 class="name">WOJCIECH POJASEK</h1>
+        <h2 class="title">Mechatronic Engineer</h2>
+        <p class="bio">
+          Hi! I am big passionate of photography! But my engineering goal is to create biomedical prostheses to help people and develop space grade technologies. I participate to the Space Team AGH science club to broaden my horizons with engineering knowledge in many different ways! I am fascinated by creating projects which are tailored to customer needs. I am the person keen on learning and taking up new challenges.
+        </p>
+        <div class="actions">
+          <button id="backBtn" class="btn">BACK</button>
+
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/wojciech-pojasek-997256349/" target="_blank" class="icon-link">
+              <img src="PROJECTS/linkedinlogo.png" alt="LinkedIn" class="icon">
+            </a>
+            <a href="https://www.instagram.com/_pojasek_/" target="_blank" class="icon-link">
+              <img src="instagramlogo2.png" alt="Instagram" class="icon">
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=48609966883" target="_blank" class="icon-link">
+                <img src="whatsapplogo.png" alt="Website" class="icon">
+             </a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const backBtn = document.getElementById('backBtn');
+    backBtn.addEventListener('click', () => {
+      if (history.length > 1) history.back();
+      else window.location.href = '#';
+    });
+  </script>
+</body>
+</html>
