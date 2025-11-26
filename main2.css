@@ -160,3 +160,55 @@ body {
     transform: scale(1.1);
     opacity: 0.8;
 }
+
+
+.media img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+/* ---------------------- */
+/* BACK BUTTON */
+/* ---------------------- */
+
+.btn {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.28s cubic-bezier(.2, .9, .2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(110%);
+  transition: transform 0.35s ease;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn:hover::after {
+  transform: translateY(0);
+}
+
+#backBtn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 9999;
+}
