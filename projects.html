@@ -80,12 +80,11 @@
         <!-- Projekt 5: Service Robot Project -->
         <div class="project">
             <div class="media">
-                <div class="slideshow"> 
-                <img src="PROJECTS/robot1.JPG" alt="Service Robot">
-                <img src="PROJECTS/robot2.JPG" alt="Service Robot">
-                </div>
-                
-                <a class="pdf-button" onclick="alert('The report is still in progress, because this is a subject from actual semester.')">DOWNLOAD PDF</a>
+                <div class="slideshow">
+                    <img src="PROJECTS/robot1.JPG" alt="Service Robot 1">
+                    <img src="PROJECTS/robot2.JPG" alt="Service Robot 2">
+                 </div>
+                         <a class="pdf-button" onclick="alert('The report is still in progress, because this is a subject from actual semester.')">DOWNLOAD PDF</a>
             </div>
             <div class="description">
                 <h2>Service Robot Project</h2>
@@ -112,23 +111,30 @@
 
     </div>
 
-    <script>
-        // Simple slideshow for Projekt 1
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slideshow img');
-        function showSlides() {
-            slides.forEach((img, i) => img.style.display = 'none');
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; }
-            slides[slideIndex-1].style.display = 'block';
-            setTimeout(showSlides, 3000);
-        }
-        if(slides.length) showSlides();
-    </script>
+<script>
+  // Niezależne slidery dla każdego .slideshow
+  document.addEventListener('DOMContentLoaded', () => {
+    const containers = document.querySelectorAll('.slideshow');
+
+    containers.forEach(container => {
+      const imgs = Array.from(container.querySelectorAll('img'));
+      if (imgs.length === 0) return;
+
+      let i = 0;
+      // start: pokaż pierwsze zdjęcie tylko w tym kontenerze
+      imgs.forEach((img, idx) => img.style.display = idx === 0 ? 'block' : 'none');
+
+      setInterval(() => {
+        imgs[i].style.display = 'none';
+        i = (i + 1) % imgs.length;
+        imgs[i].style.display = 'block';
+      }, 3000); // 3 sekundy jak w DISTOBEE
+    });
+  });
+</script>
 </body>
 <button id="backBtn" class="btn" onclick="history.back()">BACK</button>
 </html>
-
 
 
 
