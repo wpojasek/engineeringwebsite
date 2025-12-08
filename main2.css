@@ -212,3 +212,9 @@ body {
     left: 25px;
     z-index: 9999;
 }
+
+
+/* Slideshow – minimalne style, by nie migało */
+.slideshow { position: relative; }
+.slideshow img { display: none; width: 100%; height: auto; }
+.slideshow img:first-child { display: block; }
