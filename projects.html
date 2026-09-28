@@ -6,16 +6,66 @@
     <link rel="stylesheet" href="main2.css">
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-<link rel="shortcut icon" href="favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="PojasekW" />
-<link rel="manifest" href="favicon/site.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="PojasekW" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
 </head>
 <body>
     <div class="project-container">
 
-        <!-- Projekt 1: DISTOBEE -->
+        <div class="project" style="flex-direction: column;">
+            
+            <div style="text-align: center; margin-bottom: 25px; width: 100%;">
+                <h2 style="font-size: 2.5em; margin-top: 0; margin-bottom: 20px;">EMBEDDED SYSTEMS</h2>
+                <div class="embedded-tabs">
+                    <button class="tab-btn active" onclick="showEmbedded(1)">Mechatronic Design PCB</button>
+                    <button class="tab-btn" onclick="showEmbedded(2)">Step-Down Converter</button>
+                    <button class="tab-btn" onclick="showEmbedded(3)">Smart Insole (Thesis)</button>
+                </div>
+            </div>
+
+            <div class="embedded-content" id="emb-1" style="display: flex;">
+                <div class="media">
+                    <div class="slideshow">
+                        <img src="PROJECTS/schemDT.png" alt="Schematic">
+                        <img src="PROJECTS/footrpintDT.png" alt="Footprints">
+                        <img src="PROJECTS/3DDT.png" alt="3D Model">
+                    </div>
+                </div>
+                <div class="description">
+                    <h2>PCB for Mechatronic Design</h2>
+                    <p>This custom PCB was developed for the Mechatronic Design course. The system is based on the ESP32 microcontroller. The main goal of this project was to properly organize and integrate all electronics into a dedicated "elebox" enclosure, ensuring the entire control system was well-coordinated, aesthetically pleasing, and fully functional as a standalone unit.</p>
+                </div>
+            </div>
+
+            <div class="embedded-content" id="emb-2" style="display: none;">
+                <div class="media">
+                    <div class="slideshow">
+                        <img src="PROJECTS/schemvolt.png" alt="Schematic">
+                        <img src="PROJECTS/footprint.png" alt="Footprints">
+                        <img src="PROJECTS/3Dvolt.png" alt="3D Model">
+                    </div>
+                </div>
+                <div class="description">
+                    <h2>Step-Down Converter</h2>
+                    <p>This step-down converter was designed specifically for scientific and research applications. The design focuses on maximizing power conversion efficiency while minimizing thermal losses and electromagnetic interference (EMI). Careful component selection and optimized PCB routing allow for stable voltage regulation under varying load conditions, providing reliable and clean power delivery necessary for sensitive laboratory measurement equipment.</p>
+                </div>
+            </div>
+
+            <div class="embedded-content" id="emb-3" style="display: none;">
+                <div class="media stay-tuned-box">
+                    <h2>STAY TUNED</h2>
+                </div>
+                <div class="description">
+                    <h2>Engineering Thesis: Smart Insole</h2>
+                    <p>My upcoming engineering thesis focuses on the development of an intelligent insole for running shoes. The project aims to integrate a matrix of sensors to analyze foot strike patterns, biomechanics, and dynamic pressure distribution in real-time. The system will bridge the gap between embedded hardware and biomechanical data processing. Currently in the research and design phase.</p>
+                </div>
+            </div>
+
+        </div>
+
         <div class="project">
             <div class="media">
                 <div class="slideshow">
@@ -31,18 +81,16 @@
                 <h2>DISTOBEE</h2>
                 <p>The DISTOBEE project was developed for the ESA 2nd Space Resources Challenge, held on October 17, 2025. I was responsible for the design and integration of the rover’s camera system. The camera housings were modeled in Autodesk Inventor, ensuring proper protection and alignment. The system utilized Raspberry Pi boards and capture cards for video processing and data transmission. The goal was to deliver a robust and reliable vision system capable of operating in demanding environments.</p>
                 <div class="social-icons">
-    <a href="https://www.instagram.com/distobee/" target="_blank">
-        <img src="PROJECTS/instagramlogo.png" alt="Instagram">
-    </a>
-    <a href="https://www.linkedin.com/company/distobee/" target="_blank">
-        <img src="PROJECTS/linkedinlogo.png" alt="LinkedIn">
-    </a>
-</div>
-
+                    <a href="https://www.instagram.com/distobee/" target="_blank">
+                        <img src="PROJECTS/instagramlogo.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.linkedin.com/company/distobee/" target="_blank">
+                        <img src="PROJECTS/linkedinlogo.png" alt="LinkedIn">
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- Projekt 2: STM32 Data Acquisition -->
         <div class="project">
             <div class="media">
                 <img src="PROJECTS/stm1.jpg" alt="STM32 Project">
@@ -55,7 +103,6 @@
             </div>
         </div>
 
-        <!-- Projekt 3: Shaft Design -->
         <div class="project">
             <div class="media">
                 <a class="pdf-button" href="PROJECTS/pdf2.pdf" download>DOWNLOAD PDF</a>
@@ -66,7 +113,6 @@
             </div>
         </div>
 
-        <!-- Projekt 4: Mechanical Systems Analysis -->
         <div class="project">
             <div class="media">
                 <a class="pdf-button" href="PROJECTS/pdf1.pdf" download>DOWNLOAD PDF</a>
@@ -77,15 +123,13 @@
             </div>
         </div>
 
-        <!-- Projekt 5: Service Robot Project -->
         <div class="project">
             <div class="media">
                 <div class="slideshow">
                     <img src="PROJECTS/robot1.JPG" alt="Service Robot 1">
                     <img src="PROJECTS/robot2.JPG" alt="Service Robot 2">
-                    <img src="PROJECTS/robot3.JPG" alt="Service Robot 2">
                  </div>
-                         <a class="pdf-button" href="PROJECTS/SR_WOJCIECH_POJASEK_PROEJCT (1).pdf" download>DOWNLOAD PDF</a>
+                 <a class="pdf-button" onclick="alert('The report is still in progress, because this is a subject from actual semester.')">DOWNLOAD PDF</a>
             </div>
             <div class="description">
                 <h2>Service Robot Project</h2>
@@ -98,9 +142,7 @@
             </div>
         </div>
 
-
-        <!-- Projekt 6: Mechatronics LEGO Gearbox -->
-        <div class="project">
+        <div class="project" style="border-bottom: none;">
             <div class="media">
                 <video src="PROJECTS/mechproject.mp4" autoplay muted loop></video>
             </div>
@@ -112,35 +154,90 @@
 
     </div>
 
-<script>
-  // Niezależne slidery dla każdego .slideshow
-  document.addEventListener('DOMContentLoaded', () => {
-    const containers = document.querySelectorAll('.slideshow');
+    <button id="backBtn" class="btn" onclick="history.back()">BACK</button>
 
-    containers.forEach(container => {
-      const imgs = Array.from(container.querySelectorAll('img'));
-      if (imgs.length === 0) return;
+    <script>
+        // Skrypt do niezależnych sliderów Z MANUALNYM PRZEŁĄCZANIEM
+        document.addEventListener('DOMContentLoaded', () => {
+            const containers = document.querySelectorAll('.slideshow');
 
-      let i = 0;
-      // start: pokaż pierwsze zdjęcie tylko w tym kontenerze
-      imgs.forEach((img, idx) => img.style.display = idx === 0 ? 'block' : 'none');
+            containers.forEach(container => {
+                const imgs = Array.from(container.querySelectorAll('img'));
+                if (imgs.length <= 1) {
+                    if (imgs.length === 1) imgs[0].style.display = 'block';
+                    return; // Jeśli jest tylko 1 zdjęcie lub brak, nie dodajemy strzałek i logiki
+                }
 
-      setInterval(() => {
-        imgs[i].style.display = 'none';
-        i = (i + 1) % imgs.length;
-        imgs[i].style.display = 'block';
-      }, 3000); // 3 sekundy jak w DISTOBEE
-    });
-  });
-</script>
+                let i = 0;
+                let interval;
+
+                // Dynamiczne tworzenie strzałek
+                const prevBtn = document.createElement('div');
+                prevBtn.className = 'slide-nav prev';
+                prevBtn.innerHTML = '&#10094;';
+
+                const nextBtn = document.createElement('div');
+                nextBtn.className = 'slide-nav next';
+                nextBtn.innerHTML = '&#10095;';
+
+                container.appendChild(prevBtn);
+                container.appendChild(nextBtn);
+
+                // Inicjalizacja pierwszego zdjęcia
+                imgs.forEach((img, idx) => img.style.display = idx === 0 ? 'block' : 'none');
+
+                // Funkcja zmiany zdjęcia
+                function switchSlide(nextIndex) {
+                    imgs[i].style.display = 'none';
+                    i = nextIndex;
+                    if (i >= imgs.length) i = 0;
+                    if (i < 0) i = imgs.length - 1;
+                    imgs[i].style.display = 'block';
+                }
+
+                // Funkcja startu automatycznego timera
+                function startInterval() {
+                    interval = setInterval(() => {
+                        switchSlide(i + 1);
+                    }, 3500); // co 3.5s
+                }
+
+                // Resetowanie timera po manualnym kliknięciu
+                function resetInterval() {
+                    clearInterval(interval);
+                    startInterval();
+                }
+
+                // Nasłuchiwanie kliknięć
+                prevBtn.addEventListener('click', () => {
+                    switchSlide(i - 1);
+                    resetInterval();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    switchSlide(i + 1);
+                    resetInterval();
+                });
+
+                // Start automatycznego przewijania
+                startInterval();
+            });
+        });
+
+        // Skrypt do zakładek Embedded
+        function showEmbedded(tabIndex) {
+            document.querySelectorAll('.embedded-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const selectedContent = document.getElementById('emb-' + tabIndex);
+            selectedContent.style.display = window.innerWidth > 900 ? 'flex' : 'block';
+            document.querySelectorAll('.tab-btn')[tabIndex - 1].classList.add('active');
+        }
+    </script>
 </body>
-<button id="backBtn" class="btn" onclick="history.back()">BACK</button>
 </html>
-
-
-
-
-
-
-
-
