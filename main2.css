@@ -63,7 +63,52 @@ body {
     width: 100%;
     display: none;
     border-radius: 10px;
-    transition: opacity 0.5s ease-in-out;
+}
+
+.slideshow img:first-child { 
+    display: block; 
+}
+
+/* ---------------------- */
+/* SLIDESHOW NAVIGATION   */
+/* ---------------------- */
+.slide-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%; /* Szerokość obszaru do klikania */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5em;
+    cursor: pointer;
+    opacity: 0; /* Ukryte domyślnie */
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    user-select: none;
+}
+
+.slide-nav.prev {
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.slide-nav.next {
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.slideshow:hover .slide-nav {
+    opacity: 1; /* Pokaż strzałki i przyciemnienie gdy najeżdżasz na obrazek */
+}
+
+.slide-nav:hover {
+    color: #ccc;
 }
 
 /* ---------------------- */
@@ -97,36 +142,26 @@ body {
 }
 
 /* ---------------------- */
-/* SPECYFIKA PROJEKT 2 */
+/* SPECYFIKA PROJEKT 3 (Dawniej Projekt 2 - STM32) */
 /* ---------------------- */
-.project:nth-child(2) .media {
+.project:nth-child(3) .media {
     flex-direction: column;
     gap: 15px;
 }
 
-.project:nth-child(2) .media img,
-.project:nth-child(2) .media video,
-.project:nth-child(2) .media .pdf-button {
+.project:nth-child(3) .media img,
+.project:nth-child(3) .media video,
+.project:nth-child(3) .media .pdf-button {
     width: 100%;
 }
 
 /* ---------------------- */
-/* SPECYFIKA PROJEKT 5 */
+/* SPECYFIKA PROJEKT 6 (Dawniej Projekt 5 - Service Robot) */
 /* ---------------------- */
-.project:nth-child(5) .media video {
+.project:nth-child(6) .media video {
     height: 100%;
     object-fit: cover;
 }
-
-/* ---------------------- */
-/* RESPONSYWNOŚĆ */
-/* ---------------------- */
-@media (max-width: 900px) {
-    .project {
-        flex-direction: column;
-    }
-}
-
 
 /* ---------------------- */
 /* SOCIAL ICONS */
@@ -151,7 +186,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: brightness(0) invert(1); /* białe ikonki */
+    filter: brightness(0) invert(1);
     transition: transform 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
 }
@@ -160,7 +195,6 @@ body {
     transform: scale(1.1);
     opacity: 0.8;
 }
-
 
 .media img {
     width: 100%;
@@ -172,7 +206,6 @@ body {
 /* ---------------------- */
 /* BACK BUTTON */
 /* ---------------------- */
-
 .btn {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.18);
@@ -213,8 +246,79 @@ body {
     z-index: 9999;
 }
 
+/* ---------------------- */
+/* EMBEDDED TABS SYSTEM   */
+/* ---------------------- */
+.embedded-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-/* Slideshow – minimalne style, by nie migało */
-.slideshow { position: relative; }
-.slideshow img { display: none; width: 100%; height: auto; }
-.slideshow img:first-child { display: block; }
+.tab-btn {
+    background-color: #fff;
+    color: #343756;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-family: 'MuseoModerno', cursive;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.6;
+}
+
+.tab-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    opacity: 1;
+    background-color: #fff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.embedded-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+.stay-tuned-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    min-height: 300px;
+}
+
+.stay-tuned-box h2 {
+    color: rgba(255, 255, 255, 0.5) !important;
+    letter-spacing: 3px;
+    font-size: 2.5em !important;
+    margin: 0;
+}
+
+/* ---------------------- */
+/* RESPONSYWNOŚĆ */
+/* ---------------------- */
+@media (max-width: 900px) {
+    .project {
+        flex-direction: column;
+    }
+    
+    .embedded-content {
+        display: block !important;
+    }
+    
+    .embedded-content .media {
+        margin-bottom: 20px;
+    }
+}
